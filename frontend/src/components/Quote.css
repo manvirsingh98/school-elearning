@@ -1,0 +1,25 @@
+.quote{
+    position: relative;
+    padding: 120px 0;
+    color: #ffffff;
+    background-size: cover;
+    z-index: 1;
+}
+.quote::after{
+    content: '';
+   position:absolute;
+    background-color: rgba(133, 20, 76, 0.9);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.quote .quote-text{
+   margin-bottom: 0;
+   font-size: 34px;
+   text-align: center;
+}

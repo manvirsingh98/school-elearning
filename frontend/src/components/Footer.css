@@ -1,0 +1,137 @@
+.footer {
+  padding: 30px 30px;
+  position: relative;
+  background-color: #282846;
+}
+.footer .logo h1 {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  font-family: "Chango", cursive;
+  font-family: "Fredoka One", cursive;
+}
+
+.footer .right h4 {
+  position: relative;
+  color: #ffffff;
+  padding: 50px 0 10px 0;
+}
+
+.footer .right h4::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 12%;
+  border: 2px solid #ffffff;
+}
+
+.footer .right form {
+  width: 60%;
+}
+.footer .right form button {
+  background-color: rgba(133, 20, 76, 0.9);
+  color: #fff;
+  border-color: rgba(133, 20, 76, 0.9)
+}
+.footer-bottom {
+  border-top: 1px solid #ffffff;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 30px;
+}
+.footer-bottom p {
+  margin-bottom: 0;
+}
+
+.social-media-link--facebook:before {
+  background-image: linear-gradient(
+    45deg,
+    #282846 0%,
+    #282846 49%,
+    #5f7aae 50%
+  );
+}
+
+.social-media-link--twitter:before {
+  background-image: linear-gradient(
+    45deg,
+    #282846 0%,
+    #282846 49%,
+    #5ac2f0 50%
+  );
+}
+
+.social-media-link--instagram:before {
+  background-image: linear-gradient(
+    45deg,
+    #282846 0%,
+    #282846 49%,
+    #4d4d4d 50%
+  );
+}
+
+.social-media-link--linkedin:before {
+  background-image: linear-gradient(
+    45deg,
+    #282846 0%,
+    #282846 49%,
+    #4390b5 50%
+  );
+}
+
+.social-media-link--youtube:before {
+  background-image: linear-gradient(
+    45deg,
+    #282846 0%,
+    #282846 49%,
+    #c34a47 50%
+  );
+}
+
+.social-media-links {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.social-media-link {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+.social-media-link > i {
+  z-index: 1;
+}
+.social-media-link:before {
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  content: "";
+  position: absolute;
+  background-size: 300%;
+  background-position: 0% 0%;
+  transition: background-position 0.55s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+}
+.social-media-link:hover,
+.social-media-link:active,
+.social-media-link:focus {
+  transform: translateY(-16px);
+  /* This padding-bottom helps the pointer do stay inside the link,
+    avoiding the animation to flicker. */
+  padding-bottom: 32px;
+}
+.social-media-link:hover:before,
+.social-media-link:active:before,
+.social-media-link:focus:before {
+  background-position: top right;
+}
+.social-media-link + .social-media-link {
+  margin-left: 4px;
+}

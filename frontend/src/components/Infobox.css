@@ -1,0 +1,44 @@
+.infobox .card {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    border: 0;
+    /* box-shadow: -8px 3px 15px -8px rgba(0,0,0,0.35)    ; */
+    transition: transform .3s ease
+}
+
+.infobox .card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 5px 15px 5px hsla(0,0%,70%,.8)    ;
+}
+
+.infobox .card .icon {
+   margin-right: 20px;
+   font-size: 32px;
+}
+
+.infobox .card .card-details h3 {
+   position: relative;
+   margin-bottom: 30px;
+   
+     
+ }
+
+ .infobox .card .card-details p {
+    margin-bottom: 30px;
+    
+      
+  }
+.infobox .card .card-details h3::before {
+   content: '';
+   position:absolute;
+   bottom: 0;
+   border: 2px solid;
+   width: 20%;
+   margin-bottom: -8px;
+
+}
+
+.rec-carousel-item:focus,.rec-item-wrapper, div {
+    outline: none;
+}
