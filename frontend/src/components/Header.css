@@ -30,7 +30,7 @@ nav .navbar-brand {
   }
 }
 
-.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+ .navbar-light .navbar-nav .nav-link.active {
   color: #fff;
   background-color: rgba(133, 20, 76, 0.8);
   border-radius: 2px;

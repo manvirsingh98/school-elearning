@@ -28,13 +28,34 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-const admin = (req, res, next) => {
-  if (req.user && req.user.role === "admin") {
+const restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new Error("You do not have permission to perform this action", 403)
+      );
+    }
+
     next();
-  } else {
-    res.status(401);
-    throw new Error("Not authorized as an admin");
-  }
+  };
 };
 
-export { protect, admin };
+// const admin = (req, res, next) => {
+//   if (req.user && req.user.role === "admin") {
+//     next();
+//   } else {
+//     res.status(401);
+//     throw new Error("Not authorized as an admin");
+//   }
+// };
+
+// const teacher = (req, res, next) => {
+//   if (req.user && req.user.role === "teacher") {
+//     next();
+//   } else {
+//     res.status(401);
+//     throw new Error("Not authorized as an teacher");
+//   }
+// };
+
+export { protect, restrictTo };

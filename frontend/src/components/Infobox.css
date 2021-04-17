@@ -9,7 +9,7 @@
 
 .infobox .card:hover {
     transform: translateY(-20px);
-    box-shadow: 0 5px 15px 5px hsla(0,0%,70%,.8)    ;
+    box-shadow: 0 5px 15px 5px hsla(0,0%,70%,.8);
 }
 
 .infobox .card .icon {

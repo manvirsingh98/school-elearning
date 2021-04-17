@@ -1,9 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
+import { useHistory } from "react-router-dom";
+import { logout } from "../actions/userActions";
 import "./Header.css";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  let history = useHistory();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    history.push("/");
+  };
+
   return (
     <>
       <Navbar
@@ -22,18 +36,56 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-              <Link className="nav-link" to="/signup">
-                Sign up
-              </Link>
+              {/* <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer> */}
+              <LinkContainer to="/" activeClassName="">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/contact">
+                <Nav.Link>Contact</Nav.Link>
+              </LinkContainer>
+              {userInfo ? (
+                <>
+                  <LinkContainer to="/courses">
+                    <Nav.Link>Courses</Nav.Link>
+                  </LinkContainer>
+                  <NavDropdown title={userInfo.name} id="username">
+                    <LinkContainer to="/profile">
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+              ) : (
+                <>
+                  <LinkContainer to="/login">
+                    <Nav.Link>
+                      {/* <i className="fas fa-user"></i>  */}
+                      Sign in
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/signup">
+                    <Nav.Link>
+                      {/* <i className="fas fa-user"></i>  */}
+                      Sign up
+                    </Nav.Link>
+                  </LinkContainer>
+                </>
+              )}
+              {userInfo &&
+                (userInfo.role === "admin" || userInfo.role === "teacher") && (
+                  <NavDropdown
+                    title={`${userInfo.role === "admin" ? "ADMIN" : "TEACHER"}`}
+                    id="adminmenu"
+                  >
+                    <LinkContainer to="/admin/users">
+                      <NavDropdown.Item>Users</NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                )}
             </Nav>
           </Navbar.Collapse>
         </Container>

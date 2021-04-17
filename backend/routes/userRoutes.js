@@ -5,9 +5,13 @@ import {
   registerUsers,
   getUsers,
 } from "../controllers/userController.js";
-import { protect, admin } from "../middleware/authMiddleware.js";
+import { protect, restrictTo } from "../middleware/authMiddleware.js";
 
-router.route("/").post(registerUsers).get(protect, admin, getUsers);
+router
+  .route("/")
+  .post(registerUsers)
+  .get(protect, restrictTo("admin", "teacher"), getUsers);
+
 router.post("/login", authUsers);
 
 export default router;

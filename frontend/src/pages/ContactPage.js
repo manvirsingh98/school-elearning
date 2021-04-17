@@ -1,15 +1,12 @@
 import React from "react";
-import { Jumbotron, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import CustomJumbotron from "../components/CustomJumbotron";
 import "./ContactPage.css";
 
 const Contact = () => {
   return (
     <div className="contact">
-      <Jumbotron fluid>
-        <Container>
-          <h4 className="text-center mb-0">CONTACT US</h4>
-        </Container>
-      </Jumbotron>
+      <CustomJumbotron title="CONTACT US" />
       <Container>
         <Row>
           <Col md={12}>
