@@ -3,14 +3,15 @@ const router = express.Router();
 import {
   authUsers,
   registerUsers,
-  getUsers,
+  getAllUsers,
 } from "../controllers/userController.js";
+
 import { protect, restrictTo } from "../middleware/authMiddleware.js";
 
 router
   .route("/")
   .post(registerUsers)
-  .get(protect, restrictTo("admin", "teacher"), getUsers);
+  .get(protect, restrictTo("admin", "teacher"), getAllUsers);
 
 router.post("/login", authUsers);
 

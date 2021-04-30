@@ -75,17 +75,21 @@ const Header = () => {
                   </LinkContainer>
                 </>
               )}
-              {userInfo &&
-                (userInfo.role === "admin" || userInfo.role === "teacher") && (
-                  <NavDropdown
-                    title={`${userInfo.role === "admin" ? "ADMIN" : "TEACHER"}`}
-                    id="adminmenu"
-                  >
+              {userInfo && ["admin", "teacher"].includes(userInfo.role) && (
+                <NavDropdown
+                  title={`${userInfo.role === "admin" ? "ADMIN" : "TEACHER"}`}
+                  id="adminmenu"
+                >
+                  {userInfo && ["admin"].includes(userInfo.role) && (
                     <LinkContainer to="/admin/users">
                       <NavDropdown.Item>Users</NavDropdown.Item>
                     </LinkContainer>
-                  </NavDropdown>
-                )}
+                  )}
+                  <LinkContainer to="/admin/students">
+                    <NavDropdown.Item>Students</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -7,16 +7,18 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Notfound from "./pages/Notfound";
-import ContactPage from "./pages/ContactPage";
+import Contact from "./pages/Contact";
 import Header from "./components/Header";
-import ProfilePage from "./pages/ProfilePage";
-import CoursesPage from "./pages/CoursesPage";
+import Profile from "./pages/Profile";
+import Courses from "./pages/Courses";
 import Users from "./components/Users";
 import NotAuthorized from "./components/NotAuthorized";
+import Students from "./components/Students";
+import CourseDetails from "./pages/CourseDetails";
 
 function App() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,25 +28,37 @@ function App() {
       <div>
         <Header />
         <Switch>
-          <PublicRoute exact path="/" component={HomePage} />
-          <PublicRoute path="/contact" component={ContactPage} />
-          <PublicRoute path="/login" component={LoginPage} />
-          <PublicRoute path="/signup" component={SignupPage} />
+          <PublicRoute exact path="/" component={Home} />
+          <PublicRoute path="/contact" component={Contact} />
+          <PublicRoute path="/login" component={Login} />
+          <PublicRoute path="/signup" component={Signup} />
           <ProtectedRoute
             userInfo={userInfo}
             path="/profile"
-            component={ProfilePage}
+            component={Profile}
           />
           <ProtectedRoute
             userInfo={userInfo}
             path="/courses"
-            component={CoursesPage}
+            component={Courses}
+            exact
+          />
+          <ProtectedRoute
+            userInfo={userInfo}
+            path="/courses/:courseID"
+            component={CourseDetails}
+          />
+          <AdminRoute
+            userInfo={userInfo}
+            roles={["admin"]}
+            path="/admin/users"
+            component={Users}
           />
           <AdminRoute
             userInfo={userInfo}
             roles={["admin", "teacher"]}
-            path="/admin/users"
-            component={Users}
+            path="/admin/students"
+            component={Students}
           />
           <Route path="/notauthorized" component={NotAuthorized} />
           <Route component={Notfound} />

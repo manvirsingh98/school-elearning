@@ -61,9 +61,24 @@ const registerUsers = asyncHandler(async (req, res) => {
 // @desc    Get all users
 // @route   GET /api/users
 // @access  Private/Admin
-const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find({});
-  res.json(users);
+const getAllUsers = asyncHandler(async (req, res) => {
+  const { role } = req.query;
+  let queryObject = {};
+
+  if (role) {
+    queryObject = {
+      ...queryObject,
+      role,
+    };
+  }
+  const users = await User.find(queryObject);
+
+  if (users) {
+    res.json(users);
+  } else {
+    res.status(400);
+    throw new Error("No user found");
+  }
 });
 
-export { authUsers, registerUsers, getUsers };
+export { authUsers, registerUsers, getAllUsers };

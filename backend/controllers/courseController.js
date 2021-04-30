@@ -50,4 +50,19 @@ const getCourses = asyncHandler(async (req, res) => {
   }
 });
 
-export { createCourse, getCourses };
+// @desc    get a course
+// @route   POST /api/courses/:courseID
+// @access  Private
+const getCourse = asyncHandler(async (req, res) => {
+  const courseID = req.params.courseID;
+  const course = await Course.findOne({ courseID });
+
+  if (course) {
+    res.json(course);
+  } else {
+    res.status(404);
+    throw new Error("course not found");
+  }
+});
+
+export { createCourse, getCourses, getCourse };

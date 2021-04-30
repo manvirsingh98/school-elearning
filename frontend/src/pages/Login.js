@@ -4,7 +4,7 @@ import { Alert } from "react-bootstrap";
 
 import { login } from "../actions/userActions";
 
-const LoginPage = ({ history }) => {
+const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -64,7 +64,7 @@ const LoginPage = ({ history }) => {
     </section>
   );
 };
-export default LoginPage;
+export default Login;
 
 const loginForm = {
   display: "flex",

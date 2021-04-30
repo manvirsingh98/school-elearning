@@ -1,46 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import CustomJumbotron from "../components/CustomJumbotron";
 import { listUsers } from "../actions/userActions";
 
-const Users = () => {
+const Students = () => {
   const dispatch = useDispatch();
-
-  const [option, setOption] = useState("");
 
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
   useEffect(() => {
-    dispatch(listUsers(option));
-  }, [dispatch, option]);
+    dispatch(listUsers("student"));
+  }, [dispatch]);
 
   return (
     <>
-      <CustomJumbotron title="ALL USER LIST" />
+      <CustomJumbotron title="ALL STUDENTS" />
       <Container>
         <Row>
-          <Col md={12} className="mb-4">
-            <Form className="w-25">
-              <Form.Control
-                as="select"
-                onChange={(e) => setOption(e.target.value)}
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Please select
-                </option>
-                <option value="admin">Admin</option>
-                <option value="teacher">Teacher</option>
-                <option value="student">Student</option>
-                {/* {uniqueRoles &&
-                  uniqueRoles.map((uniqueRole) => (
-                    <option key={uniqueRole._id}>{uniqueRole.role}</option>
-                  ))} */}
-              </Form.Control>
-            </Form>
-          </Col>
+          <Col md={12} className="mb-4"></Col>
           <Col md={12}>
             {loading && <h4>Loading...</h4>}
             {error && <h4>{error}</h4>}
@@ -72,4 +51,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Students;

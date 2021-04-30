@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Infobox from "../components/Infobox";
 import Quote from "../components/Quote";
 
-const HomePage = () => {
+const Home = () => {
   return (
     <div className="home-page">
       <Banner />
@@ -19,4 +19,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

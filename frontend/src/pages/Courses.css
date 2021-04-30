@@ -2,20 +2,35 @@
 
 .courses .card-deck {
     margin: 0 -15px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
   
   .courses .card-deck .card {
-    margin: 0 0 1rem;
-    transition: box-shadow .3s ease
+    transition: box-shadow .3s ease;
+    margin: 1rem;
   }
-
+.courses .card-deck .card .card-title {
+  font-size: 1.15rem;
+}
   .courses .card-deck .card p {
     font-size: 13px;
   }
   .courses .card-deck .card:hover {
     /* transform: translateY(-20px); */
     box-shadow: 0 5px 15px 5px hsla(0,0%,70%,.8);
+  }
+  .courses .card-deck a:hover {
+    
+    color: #282846;
+    text-decoration: none;
+
+}
+
+  .courses .card-deck a {
+    
+      color: #282846;
+      text-decoration: none;
+  
   }
   
   @media (min-width: 576px) and (max-width: 767.98px) {

@@ -3,7 +3,7 @@ import { Form, Alert, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../actions/userActions";
 
-const SignupPage = ({ location, history }) => {
+const Signup = ({ location, history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -82,7 +82,7 @@ const SignupPage = ({ location, history }) => {
   );
 };
 
-export default SignupPage;
+export default Signup;
 
 const login = {
   display: "flex",
